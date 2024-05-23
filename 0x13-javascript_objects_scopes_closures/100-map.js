@@ -1,8 +1,16 @@
 #!/usr/bin/node
-const { list } = require('./100-data');
 
-const newlist = list.map((element, index) => {
-  return (element * index);
-});
-console.log(list);
-console.log(newlist);
+const dict = require('./101-data');
+
+const occurrencesByUserId = dict;
+const userIdsByOccurrence = {};
+
+for (const userId in occurrencesByUserId) {
+  const occurrences = occurrencesByUserId[userId];
+  if (!userIdsByOccurrence[occurrences]) {
+    userIdsByOccurrence[occurrences] = [];
+  }
+  userIdsByOccurrence[occurrences].push(userId);
+}
+
+console.log(userIdsByOccurrence);
